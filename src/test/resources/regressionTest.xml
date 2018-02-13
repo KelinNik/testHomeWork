@@ -1,0 +1,19 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+
+<suite name="hw2 Regression" verbose="1" >
+
+    <test name="Test2Exercise2_2">
+        <groups>
+            <run>
+                <include name="regression"  />
+            </run>
+        </groups>
+        <packages>
+            <package name="hw2" />
+        </packages>
+    </test>
+
+</suite>

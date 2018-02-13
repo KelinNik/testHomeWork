@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke tests" verbose="1">
+    <test name="Smoke test" thread-count="2" parallel="methods">
+        <classes>
+            <class name="hw4.TestOfFunctionality"/>
+            <class name="hw4.TestSlideBar"/>
+        </classes>
+    </test>
+</suite>
