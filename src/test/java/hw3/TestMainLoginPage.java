@@ -1,5 +1,6 @@
 package hw3;
 
+import enums.MainPageEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -46,7 +47,7 @@ public class TestMainLoginPage {
         mainPage.checkImagesIsDisplayed();
 
         //7 Assert that there are 4 texts on the Home Page and check them by getting texts
-        mainPage.checkTextIsDisplayed();
+        mainPage.checkTextIsDisplayed(MainPageEnum.values());
         mainPage.checkAccordanceTextAndEnum();
 
         //8 Assert that there are the main header and the text below it on the Home Page

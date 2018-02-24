@@ -31,6 +31,9 @@ public class MainPage {
     @FindBy(css = ".profile-photo")
     private WebElement userName;
 
+    @FindBy(css = ".benefit-icon")
+    private List<WebElement> benefitIcons;
+
     @FindBy(css = ".benefits")
     private List<WebElement> images;
 
@@ -69,12 +72,14 @@ public class MainPage {
     }
 
     public void checkImagesIsDisplayed() {
+        assertEquals(benefitIcons.size(), 4);
         for (WebElement capture : images) {
             assertTrue(capture.isDisplayed());
         }
     }
 
-    public void checkTextIsDisplayed() {
+    public void checkTextIsDisplayed(MainPageEnum[] texts) {
+        assertEquals(benefitTexts.size(), texts.length);
         for (WebElement element : benefitTexts) {
             assertTrue(element.isDisplayed());
         }
