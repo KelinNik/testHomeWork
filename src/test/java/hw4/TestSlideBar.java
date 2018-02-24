@@ -13,6 +13,9 @@ import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
+import static enums.LoginPageEnum.DRIVER;
+import static java.lang.System.setProperty;
+
 @Listeners(AllureAttachmentListener.class)
 public class TestSlideBar {
     private IndexPage indexPage;
@@ -21,8 +24,7 @@ public class TestSlideBar {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
+        setProperty("chromedriver", DRIVER.text);
         indexPage = Selenide.page(IndexPage.class);
         datePage = Selenide.page(DatePage.class);
         user = new User();
