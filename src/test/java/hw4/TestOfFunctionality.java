@@ -7,6 +7,7 @@ import hw4.pages.IndexPage;
 import hw4.pages.User;
 import listeners.AllureAttachmentListener;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
@@ -19,7 +20,7 @@ public class TestOfFunctionality {
     private DifferentPage differentPage;
     private User user;
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;

@@ -7,6 +7,7 @@ import hw4.pages.IndexPage;
 import hw4.pages.User;
 import listeners.AllureAttachmentListener;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
@@ -18,7 +19,7 @@ public class TestSlideBar {
     private DatePage datePage;
     private User user;
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
@@ -52,7 +53,7 @@ public class TestSlideBar {
         datePage.moveSlidersAtNewPositions(-20, -300);
         datePage.checkSlidersPositions("0", "0");
 
-        //7 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
+        //7 Using drag-and-drop set Range sliders. left sliders - the most right position, right slider - the most right position.
         datePage.moveSlidersAtNewPositions(300, 400);
         datePage.checkSlidersPositions("100", "100");
 
