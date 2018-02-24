@@ -43,7 +43,7 @@ public class MainPage {
     @FindBy(css = ".main-txt")
     private WebElement mainTextInPage;
 
-    public MainPage(WebDriver driver){
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -94,6 +94,7 @@ public class MainPage {
     public void checkMainTitle(FirstPageEnum text) {
         assertTrue(mainTitle.getText().contains(text.text));
     }
+
     public void checkMainTextInPage(FirstPageEnum text) {
         assertTrue(mainTextInPage.getText().contains(text.text));
     }

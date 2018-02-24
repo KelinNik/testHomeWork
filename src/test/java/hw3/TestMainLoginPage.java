@@ -3,6 +3,7 @@ package hw3;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,12 +17,12 @@ public class TestMainLoginPage {
     private WebDriver driver;
     private MainPage mainPage;
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void setUpPages() {
         setProperty("chromedriver", DRIVER.text);
         driver = new ChromeDriver();
         mainPage = PageFactory.initElements(driver, MainPage.class);
-        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
     }
 
     @Test
