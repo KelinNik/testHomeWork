@@ -10,11 +10,11 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.matchesText;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static enums.FirstPageEnum.MAIN_PAGE_HEAD_TEXT;
 import static enums.FirstPageEnum.MAIN_PAGE_TEXT_BELLOW_HEADER;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class IndexPage {
 
@@ -62,6 +62,7 @@ public class IndexPage {
 
     @Step("Check Images Existence")
     public void checkImagesExistence() {
+        assertEquals(elementList.size(), 1);
         for (SelenideElement el : elementList) {
             el.isDisplayed();
         }
@@ -69,6 +70,7 @@ public class IndexPage {
 
     @Step("Check text under images")
     public void checkTextUnderImages() {
+        assertEquals(elementText.size(), 4);
         for (int i = 0; i < elementText.size(); i++) {
             elementText.get(i).shouldHave(text(MainPageEnum.values()[i].toString()));
         }
@@ -84,7 +86,7 @@ public class IndexPage {
 
     @Step("Check dropDown Menu")
     public void checkDropdownMenu() {
-        menuService.exists();
+        menuService.shouldBe(visible);
         menuService.click();
 
         for (int i = 0; i < menuList.size(); i++) {

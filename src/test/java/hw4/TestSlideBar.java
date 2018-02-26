@@ -1,33 +1,31 @@
 package hw4;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import hw4.pages.DatePage;
 import hw4.pages.IndexPage;
 import hw4.pages.User;
 import listeners.AllureAttachmentListener;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
-
-import static enums.LoginPageEnum.DRIVER;
-import static java.lang.System.setProperty;
 
 @Listeners(AllureAttachmentListener.class)
-public class TestSlideBar {
+public class TestSlideBar extends Base {
     private IndexPage indexPage;
     private DatePage datePage;
     private User user;
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        setProperty("chromedriver", DRIVER.text);
+    public void setUpPage() {
         indexPage = Selenide.page(IndexPage.class);
         datePage = Selenide.page(DatePage.class);
         user = new User();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public  void tearDown(){
+        datePage.closeBrowser();
     }
 
     @Test
@@ -61,8 +59,8 @@ public class TestSlideBar {
 
         //8 Using drag-and-drop set Range sliders.
         datePage.moveSlidersAtNewPositions(-194, -84);
-        datePage.checkSlidersPositions("0", "70");
+        datePage.checkSlidersPositions("30", "70");
 
-        datePage.closeBrowser();
+
     }
 }

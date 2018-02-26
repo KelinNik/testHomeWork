@@ -46,11 +46,8 @@ public class MainPage {
     @FindBy(css = ".main-txt")
     private WebElement mainTextInPage;
 
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-    }
 
-    public void openPage() {
+    public void openPage(WebDriver driver) {
         driver.navigate().to(MAIN_PAGE_ADDRESS.text);
     }
 

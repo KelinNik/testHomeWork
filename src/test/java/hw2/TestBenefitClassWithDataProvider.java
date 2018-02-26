@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,12 +25,10 @@ public class TestBenefitClassWithDataProvider {
 
     private List<WebElement> image;
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void setUp() {
         driver = new ChromeDriver();
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
-        text = driver.findElements(By.className("benefit-txt"));
-        image = driver.findElements(By.className("benefit-icon"));
+
     }
 
     @AfterSuite(alwaysRun = true)
@@ -50,7 +48,9 @@ public class TestBenefitClassWithDataProvider {
 
     @Test(dataProvider = "textDataBenefitClass")
     public void testWithDataProvider(MainPageEnum anEnum) {
-
+        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        text = driver.findElements(By.className("benefit-txt"));
+        image = driver.findElements(By.className("benefit-icon"));
         assertEquals(text.get(anEnum.ordinal()).getText().replaceAll("\n", " "), anEnum.toString());
         assertTrue(image.get(anEnum.ordinal()).isDisplayed());
     }

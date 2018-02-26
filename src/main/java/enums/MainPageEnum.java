@@ -13,7 +13,6 @@ public enum MainPageEnum {
         this.text = text;
     }
 
-
     @Override
     public String toString() {
         return text;

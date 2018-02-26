@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -23,7 +23,7 @@ public class SmokeRegressionTest {
 
     private List<WebElement> image;
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = new ChromeDriver();
         driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
@@ -31,7 +31,7 @@ public class SmokeRegressionTest {
         image = driver.findElements(By.className("benefit-icon"));
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.close();
     }
